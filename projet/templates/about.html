@@ -1,0 +1,15 @@
+{%extends "layout.html"%}
+{% block content%}
+<div class="container d-flex flex-column justify-content-between align-items-center" style="min-height: 100vh; padding-bottom: 60px;">
+    <div>
+        <h1 class="mb-8">Qui sommes-nous</h1>
+        <p class="lead my-4">
+            Nous sommes une équipe de <span class="text-warning"> gastronomes dévoués, engagés </span> à transformer chaque repas en une expérience inoubliable. Notre mission est de rendre la cuisine accessible à tous, en vous offrant des recettes simples, intuitives et savoureuses. Nous croyons que cuisiner doit être une aventure amusante et enrichissante, où chaque plat est une expression de créativité. Rejoignez-nous dans cette quête culinaire et laissez-nous vous guider vers des horizons gourmands inexplorés !
+        </p>
+    </div>
+    <div>
+        <img class="img-fluid" src="{{url_for('static', filename='halwa3.jpg')}}" alt="" style="height: 100vh; object-fit: cover;">>
+    </div>
+</div>
+
+{% endblock content %}

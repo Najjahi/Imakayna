@@ -1,0 +1,10 @@
+{% extends "recette.html" %}
+{% block recette %}
+<div class="container pt-5">
+    <br>
+    <h2>{{recette.title}}</h2>
+    <hr>
+    {{recette.content | safe}}
+</div>
+
+{% endblock recette %}

@@ -1,0 +1,150 @@
+{% extends "dashboard.html"%}
+{% block new_recette %}
+<div class="{{'tab-pane fade show active p-3' if active_tab=='new_recette' else 'tab-pane fade p-3'}}" id="nav-newRecette"
+    role="tabpanel" aria-labelledby="nav-newRecette-tab">
+    <form action="/dashboard/new_recette" method="POST" enctype="multipart/form-data">
+        {{ new_recette_form.hidden_tag()}}
+        <legend class="border-bottom my-3">Nouvelle Recette</legend>
+        <div class="mb-3">
+            {{ new_recette_form.plat.label(class='form-control-label')}}
+
+            {% if new_recette_form.plat.errors %}
+            {{ new_recette_form.plat(class='form-control is-invalid')}}
+            <div class="invalid-feedback">
+                {% for error in new_recette_form.plat.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ new_recette_form.plat(class='form-select') }}
+            {% endif %}
+
+
+
+            <button type="button" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#newPlat">
+                New Plat?
+            </button>
+        </div>
+        <div class="mb-3">
+            {{ new_recette_form.title.label(class='form-control-label')}}
+            {% if new_recette_form.title.errors %}
+            {{ new_recette_form.title(class='form-control is-invalid')}}
+            <div class="invalid-feedback">
+                {% for error in new_recette_form.title.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ new_recette_form.title(class='form-control')}}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ new_recette_form.slug.label(class='form-control-label')}}
+
+            {% if new_recette_form.slug.errors %}
+            {{ new_recette_form.slug(class='form-control is-invalid')}}
+            <div class="invalid-feedback">
+                {% for error in new_recette_form.slug.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ new_recette_form.slug(class='form-control')}}
+            {% endif %}
+
+        </div>
+        <div class="mb-3">
+            {{ new_recette_form.content.label(class='form-control-label')}}
+
+            {% if new_recette_form.content.errors %}
+            {{ new_recette_form.content(class='form-control is-invalid')}}
+            <div class="invalid-feedback">
+                {% for error in new_recette_form.content.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+            {% else %}
+            {{ new_recette_form.content(class='form-control')}}
+            {% endif %}
+        </div>
+        <div class="mb-3">
+            {{ new_recette_form.thumbnail.label()}}
+            {{ new_recette_form.thumbnail(class='form-control-file')}}
+            {% if new_recette_form.thumbnail.errors %}
+            {% for error in new_recette_form.thumbnail.errors %}
+            <span class="text-danger">{{ error }}</span>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            <div class="col-12">
+                <button class="btn btn-success" type="submit">Recette</button>
+            </div>
+        </div>
+    </form>
+    {{ ckeditor.load() }}
+    {{ ckeditor.config(name='content') }}
+
+    <!-- Modal Content -->
+    <div class="modal fade" id="Plat" tabindex="-1" aria-labelledby="newPlatModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="newPlatModal">Créer un nouveau Plat</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    {{ modal_messages() }}
+                    <form action="/dashboard/new_recette" method="POST">
+                        {{ new_plat_form.hidden_tag()}}
+                        <div class="mb-3">
+                            {{ new_plat_form.title.label(class='form-control-label')}}
+
+                            {% if new_plat_form.title.errors %}
+                            {{ new_plat_form.title(class='form-control is-invalid')}}
+                            <div class="invalid-feedback">
+                                {% for error in new_plat_form.title.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ new_plat_form.title(class='form-control')}}
+                            {% endif %}
+                        </div>
+                        <div class="mb-3">
+                            {{ new_plat_form.description.label(class='form-control-label')}}
+
+                            {% if new_plat_form.description.errors %}
+                            {{ new_plat_form.description(class='form-control is-invalid')}}
+                            <div class="invalid-feedback">
+                                {% for error in new_plat_form.description.errors %}
+                                <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                            {{ new_plat_form.description(class='form-control')}}
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            {{ new_plat_form.icon.label(class='form-control')}}
+                            {{ new_plat_form.icon(class='form-control-file')}}
+                            {% if new_plat_form.icon.errors %}
+                            {% for error in new_plat_form.icon.errors %}
+                            <span class="text-danger">{{ error }}</span>
+                            {% endfor %}
+                            {% endif %}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            {{ new_plat_form.submit(class="btn btn-primary") }}
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock new_recette %}
