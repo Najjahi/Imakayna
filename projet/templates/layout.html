@@ -23,7 +23,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Le titre du Modal </h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body bg-success-subtle">
                     Le contenu du modal
                 </div>
                 <div class="modal-footer">
@@ -75,8 +75,6 @@
                             </li>
                         </ul>
                     </div>
-
-
                     {% else %}
                     <li class="nav-item text-success">
                         <a href="{{ url_for('users.register') }}" class="nav-link text-success">S'inscrire</a>
