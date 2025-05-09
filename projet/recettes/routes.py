@@ -22,7 +22,7 @@ from flask_login import (
     current_user,
 )
 from projet.helpers import save_picture
-from projet.recettes.helpers import get_precedente_suivante_recette, delete_picture
+from projet.recettes.helpers import get_precedent_suivant_recette, delete_picture
 from flask import g
 
 recettes = Blueprint("recettes", __name__)
@@ -94,15 +94,15 @@ def new_recette():
 def recette(recette_slug, plat):
     recette = Recette.query.filter_by(slug=recette_slug).first()
     if recette:
-        precedente_recette, suivante_recette = get_precedente_suivante_recette(recette)
+        precedent_recette, suivant_recette = get_precedent_suivant_recette(recette)
     recette_id = recette.id if recette else None
     recette = Recette.query.get_or_404(recette_id)
     return render_template(
         "recette_view.html",
         title=recette.title,
         recette=recette,
-        precedente_recette=precedente_recette,
-        suivante_recette=suivante_recette,
+        precedent_recette=precedent_recette,
+        suivant_recette=suivant_recette,
     )
 
 
@@ -125,7 +125,7 @@ def user_recettes():
 def update_recette(recette_slug, plat):
     recette = Recette.query.filter_by(slug=recette_slug).first()
     if recette:
-        precedente_recette, suivante_recette = get_precedente_suivante_recette(recette)
+        precedent_recette, suivant_recette = get_precedent_suivant_recette(recette)
     recette_id = recette.id if recette else None
     recette = Recette.query.get_or_404(recette_id)
     if recette.author != current_user:
@@ -154,8 +154,8 @@ def update_recette(recette_slug, plat):
         "update_recette.html",
         title="Update | " + recette.title,
         recette=recette,
-        precedente_recette=precedente_recette,
-        suivante_recette=suivante_recette,
+        precedent_recette=precedent_recette,
+        suivant_recette=suivant_recette,
         form=form,
     )
 

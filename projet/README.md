@@ -17,8 +17,10 @@ pip install Flask-Bcrypt
 pip install Flask-Migrate
 pip install python-dotenv
 pip install bleach
-flask db init
+pip install Flask==2.2.5
 
+
+flask db init
 flask db migrate -m "Message de migration"
 
 
@@ -140,7 +142,7 @@ db.create_all()
 User.query.all()
 
 
-RDV : https://www.jdoodle.com/online-java-compiler
+
 
 from itsdangerous import URLSafeTimedSerializer
 >>>
@@ -156,6 +158,7 @@ P@ssw0rd
 
 https://dbdiagram.io/d/67ed0dd84f7afba18411e146  mpd par yamina 
 https://demo.bpmn.io/new  bpmn par yamina
+https://www.jdoodle.com/online-java-compiler
 
 mysql Root Root Imane p@ssw0rd
 
@@ -209,4 +212,12 @@ User('lina', 'marhri', 'lina', 'lina@gmail.com', 'a18e787698408e11.png')
 ...     print(user.recettes)
 ...
 [Recette('Seffa au poulet', '2025-04-27 11:01:50.224078'), Recette('pastilla poulet amandes', '2025-04-27 11:16:10.195609')]
->>>
+
+flag est une variable booléenne (vrai ou faux)
+Serializer est une classe fournie par la bibliothèque itsdangerous Elle permet de Signer des données pour les sécuriser: Sérialise des données Python en chaîne de caractères sécurisée  (comme un token dans un lien). Puis peut désérialiser (décoder) cette chaîne plus tard.
+path est le chemin relatif vers le dossier où je veux enregistrer l'image ("static/user_pics").
+os Fait partie de la bibliothèque standard Python, il Sert à manipuler les chemins de fichiers, de manière sûre entre OS.
+CKEDITOR_ENABLE_CODESNIPPET active le plugin “CodeSnippet” dans CKEditor, Ce plugin permet d’insérer des blocs de code bien formatés et colorés 
+RequestResetForm : Demande Réinitialiser Formulaire
+Blueprint est une manière de modulariser une application Flask. Il permet de regrouper des routes, des templates, des formulaires, etc., dans un module logique indépendant.
+abort est une fonction dans Flask qui permet d'arrêter l'exécution d'une vue et renvoyer un code de statut HTTP spécifique. Cela permet de renvoyer des erreurs HTTP personnalisées.

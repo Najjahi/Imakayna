@@ -5,24 +5,24 @@
         <!-- article contents -->
         <div class="col-lg-8 col-md-12">
             {% block recette %} {% endblock recette %}
-            <!--  previous and next plat -->
+            <!--  precedent and suivant plat -->
             <div class="row justify-content-md-center">
                 <div class="col-4">
-                    {% if previous_plat %}
+                    {% if precedent_plat %}
                     <a
-                        href="{{url_for('plats.plat', plat_slug=previous_plat.slug, plat=previous_plat.plat_name.title)}}">
+                        href="{{url_for('plats.plat', plat_slug=precedent_plat.slug, plat=precedent_plat.plat_name.title)}}">
                         <button class="btn btn-warning" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
-                            title="{{previous_recette.title}}">
+                            title="{{precedent_recette.title}}">
                             &lt&lt&lt Plat précédent
                         </button>
                     </a>
                     {% endif %}
                 </div>
                 <div class="col-4">
-                    {% if next_recette %}
-                    <a href="{{url_for('recettes.recette', recette_slug=next_recette.slug, plat=next_recette.plat_name.title)}}">
+                    {% if suivant_recette %}
+                    <a href="{{url_for('recettes.recette', recette_slug=suivant_recette.slug, plat=suivant_recette.plat_name.title)}}">
                         <button class="btn btn-warning" type="button" data-bs-toggle="tooltip" data-bs-placement="top"
-                            title="{{next_recette.title}}">
+                            title="{{suivant_recette.title}}">
                             &gt&gt&gt Plat suivant
                         </button>
                     </a>

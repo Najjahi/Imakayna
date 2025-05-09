@@ -74,3 +74,13 @@ body::before {
     background-repeat: no-repeat; /* Eviter que l'image se répète */
     background-attachment: fixed; /* Fixer l'image en arrière-plan */
 } 
+#plats {
+    width: 80%;
+    height: 50vh; /* Hauteur de l'écran complet */
+    background-image: url('../static/poulet.jpg'); /* Ajustez le chemin selon votre projet */
+    background-size: contain; /* L'image s'ajuste pour être entièrement visible */
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
