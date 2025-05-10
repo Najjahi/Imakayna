@@ -1,10 +1,10 @@
-from flask import Blueprint, request, redirect, url_for, flash
+from flask import Blueprint, request, redirect, url_for, flash, abort
 from projet import db
 from projet.models import Recette, Plat
 from flask import (
     render_template,
 )
-from flask_login import current_user
+from flask_login import login_required, current_user
    
 plats_bp = Blueprint("plats", __name__)
 
@@ -33,16 +33,14 @@ def plats():
 # Suppression d'un plat
 
 @plats_bp.route("/plat/<int:plat_id>/delete", methods=["POST"])
+@login_required
 def delete_plat(plat_id):
     plat = Plat.query.get_or_404(plat_id)
-    
-    # Vérifier si l'utilisateur est l'auteur du plat ou un administrateur
-    if plat.author != current_user and not current_user.is_admin:
-        flash("Vous n'êtes pas autorisé à supprimer ce plat.", "danger")
-        return redirect(url_for("plats.plats"))
-    
+
+    if not current_user.is_admin:
+        abort(403)  # Interdiction
+
     db.session.delete(plat)
     db.session.commit()
-    
-    flash("Le plat a bien été supprimé.", "success")
-    return redirect(url_for("plats.plats"))
+    flash("Le plat a été supprimé avec succès.", "success")
+    return redirect(url_for('home'))
