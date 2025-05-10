@@ -64,6 +64,7 @@
             </div>
             <div class="form-group">
                 {{ form.password.label(class='form-control-label text-light mb-2')}}
+                <div style="position: relative;">
                 {% if form.password.errors%}
                 {{ form.password(class='form-control form-control is-invalid')}}
                 <div class="invalid-feedback">
@@ -72,12 +73,17 @@
                     {% endfor %}
                 </div>
                 {% else %}
-                {{ form.password(class='form-control form-control')}}
+                {{ form.password(class='form-control for-control')}}
                 {% endif %}
-
+                <span onclick="togglePassword('password')" 
+              style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+            👁️
+                </span>
+            </div>
             </div>
             <div class="form-group">
                 {{ form.confirm_password.label(class='form-control-label text-light mb-2')}}
+                <div style="position: relative;">
                 {% if form.confirm_password.errors%}
                 {{ form.confirm_password(class='form-control form-control is-invalid')}}
                 <div class="invalid-feedback">
@@ -88,8 +94,12 @@
                 {% else %}
                 {{ form.confirm_password(class='form-control form-control')}}
                 {% endif %}
-
+                <span onclick="togglePassword('confirm_password')" 
+                style="position: absolute; top: 50%; right: 10px; transform: translateY(-50%); cursor: pointer;">
+              👁️
+                </span>
             </div>
+         </div>
             <div class="form-group">
                 {{ form.submit(class='btn btn-outline-info')}}
             </div>
@@ -103,4 +113,10 @@
         </div>
     </div>
 </div>
+<script>
+function togglePassword(fieldId) {
+    const input = document.getElementById(fieldId);
+    input.type = input.type === 'password' ? 'text' : 'password';
+}
+</script>
 {% endblock content %}

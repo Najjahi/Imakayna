@@ -3,8 +3,7 @@ import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 
-# Charger les variables d'environnement
-load_dotenv()
+load_dotenv() # Charger les variables d'environnement
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -17,3 +16,6 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get("EMAIL_USER")
     MAIL_PASSWORD = os.environ.get("EMAIL_PASS")
+    FLASK_ENV = os.environ.get("FLASK_ENV")  # Ajouté dans la classe de config
+    DEBUG = FLASK_ENV == 'development'  # Active le debug si l'environnement est 'development'
+

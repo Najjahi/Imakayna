@@ -5,8 +5,7 @@
     id='nav-user_recettes' role="tabpanel" aria-labelledby="nav-user_recettes-tab">
 <section>
     <div class="container p-5">
-        <div class="row mb-5 "></div>
-        
+        <div class="row mb-5 "></div>        
         <div class="row">
             {% for recette in current_user.recettes %}
             <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
@@ -23,7 +22,7 @@
                         <span class="text-muted">Le: {{recette.date_posted.strftime('%Y-%m-%d')}}</span>
                         <div class="m-auto">
                             <a href="{{url_for('recettes.update_recette', recette_slug = recette.slug, plat = recette.plat_name.title)}}"
-                                class="btn btn-info btn-sm m-1">Modifier</a>
+                                class="btn btn-success btn-sm m-1">Modifier</a>
                             <button class="btn btn-danger btn-sm m-1" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal"> Supprimer </button>
                         </div>
@@ -37,16 +36,16 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="deleteModalLabel">Vous voulez Supprimer cette Recette ? </h5>
+                            <h5 class="modal-title" id="deleteModalLabel">Vous voulez bien Supprimer cette Recette ? </h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
                             Etes-vous sûr de vouloir supprimer la recette ? Cette opération ne peut pas être annulée !
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Fermer</button>
                             <form action="{{ url_for('recettes.delete_recette', recette_id = recette.id)}}" method="POST">
-                                <input type="submit" class="btn btn-danger" value="Delete">
+                                <input type="submit" class="btn btn-danger" value="Supprimer">
                             </form>
                         </div>
                     </div>

@@ -38,12 +38,10 @@ class RegistrationForm(FlaskForm):
             raise ValidationError(
                 "Ce nom d'utilisateur existe déjà ! Veuillez en choisir un autre"
             )
-
     def validate_email(self, email):
         user = User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError("Cet Email existe déjà ! Veuillez en choisir un autre")
-
 
 class LoginForm(FlaskForm):
     email = StringField("Email", validators=[DataRequired(), Email()])
@@ -55,7 +53,6 @@ class LoginForm(FlaskForm):
     )
     remember = BooleanField("Se souvenir de moi")
     submit = SubmitField("Se connecter")
-
 
 class UpdateProfileForm(FlaskForm):
     username = StringField(

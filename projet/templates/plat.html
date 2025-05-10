@@ -44,13 +44,11 @@
                     {% if page_num %}
                     {% if recettes.page == page_num %}
                     <li class="page-item active">
-                        <a href="{{url_for('plats.plat',plat_title=plat.title, page=page_num)}}"
-                            class="page-link">{{page_num}}</a>
+                        <a href="{{url_for('plats.plat', plat_title=plat.title, page=page_num)}}" class="page-link">{{page_num}}</a>
                     </li>
                     {%else%}
                     <li class="page-item">
-                        <a href="{{ url_for('plats.plat', plat_title=plat.title, page=page_num) }}">
-                            class="page-link">{{page_num}}</a>
+                        <a href="{{url_for('plats.plat', plat_title=plat.title, page=page_num)}}" class="page-link">{{page_num}}</a>
                     </li>
                     {%endif%}
                     {% else %}

@@ -54,6 +54,7 @@ def new_recette():
             author=current_user,
             plat_name=plat,
             thumbnail=picture_file,
+            is_approved=False,  # ❗ La recette attend validation
         )
         db.session.add(recette)
         db.session.commit()
@@ -78,8 +79,7 @@ def new_recette():
         return redirect(url_for("users.dashboard"))
 
     modal = None if flag else "newPlat"
-    return render_template_modal(
-    
+    return render_template_modal(   
     
         "new_recette.html",
         title="New Recette",
@@ -88,7 +88,6 @@ def new_recette():
         active_tab="new_recette",
         modal=modal,
     )
-
 
 @recettes.route("/<string:plat>/<string:recette_slug>")
 def recette(recette_slug, plat):
@@ -105,7 +104,6 @@ def recette(recette_slug, plat):
         suivant_recette=suivant_recette,
     )
 
-
 @recettes.route("/dashboard/user_recettes", methods=["GET", "POST"])
 @login_required
 def user_recettes():
@@ -119,7 +117,6 @@ def user_recettes():
         active_tab="user_recettes",
         recettes=recettes_user,
     )
-
 
 @recettes.route("/<string:plat>/<string:recette_slug>/update", methods=["GET", "POST"])
 def update_recette(recette_slug, plat):
@@ -159,7 +156,6 @@ def update_recette(recette_slug, plat):
         form=form,
     )
 
-
 @recettes.route("/recette/<recette_id>/delete", methods=["POST"])
 def delete_recette(recette_id):
     recette = Recette.query.get_or_404(recette_id)
@@ -169,3 +165,9 @@ def delete_recette(recette_id):
     db.session.commit()
     flash("Votre recette a bien été supprimé!", "success")
     return redirect(url_for("recettes.user_recettes"))
+
+@recettes.route('/recettes')
+def all_recettes():
+    recettes = Recette.query.filter_by(is_approved=True).all()
+    return render_template('recettes.html', recettes=recettes)
+

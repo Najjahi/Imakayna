@@ -26,7 +26,6 @@ from projet.users.helpers import send_reset_email
 
 users = Blueprint("users", __name__)
 
-
 @users.route("/register", methods=["GET", "POST"])
 def register():
     if current_user.is_authenticated:
@@ -66,18 +65,15 @@ def login():
             flash("Connexion infructueuse. Veuillez vérifier les informations d’identification", "danger")
     return render_template("login.html", title="Login", form=form)
 
-
 @users.route("/logout")
 def logout():
     logout_user()
     return redirect(url_for("main.home"))
 
-
 @users.route("/dashboard", methods=["GET"])
 @login_required
 def dashboard():
     return render_template("dashboard.html", title="Dashboard", active_tab=None)
-
 
 @users.route("/dashboard/profile", methods=["GET", "POST"])
 @login_required
@@ -107,7 +103,6 @@ def profile():
         image_file=image_file,
         active_tab="profile",
     )
-
 
 @users.route("/author/<string:username>", methods=["GET"])
 def author(username):

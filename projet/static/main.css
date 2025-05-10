@@ -7,11 +7,11 @@ body::before {
 .card {
     transition: 0.7s ease;
     box-shadow: 0 5px 15px rgba(1 1 1/ 15);
-    border-radius: 5px;
+    border-radius: 100px;
     margin: 5px;
+    background-color: #3a5a40;
 
 }
-
 .card:hover {
     transform: scale(1.1);
 }

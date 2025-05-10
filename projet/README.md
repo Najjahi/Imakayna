@@ -19,10 +19,12 @@ pip install python-dotenv
 pip install bleach
 pip install Flask==2.2.5
 
+mkdir migrations\
+flask db migrate -m "Ajout du champ is_approved"
+flask db upgrade
 
 flask db init
 flask db migrate -m "Message de migration"
-
 
 pip install --upgrade flask-admin flask flask-sqlalchemy wtforms wtforms-sqlalchemy flask-ckeditor Flask-Mail flask-modals Flask-Mail flask-admin Pillow Flask-WTF Flask-Login flask-mail email_validator Flask-Bcrypt Flask-Migrate Werkzeug==2.2.3 python-dotenvpy --upgrade Pillow --upgrade greenlet pip-tools Flask-Migrate Flask-Modals
 
@@ -156,6 +158,34 @@ ztop dgeg hjxg ywip
 de51a48395fd0c521776b6b54fd8a0e7
 P@ssw0rd
 
+>>>> from projet import app
+>>> from projet.models import db, Plat, User
+>>> with app.app_context():
+...     plats = Plat.query.all()
+...     print("Plats :", plats)
+
+
+Plats : [Plat('tagine aux pruneaux'), Plat('Seffa au poulet'), Plat('couscous'), Plat('Nos desserts'), Plat('Nos entrées'), Plat('Plat principal')]>>> 
+
+>>> from projet.models import db, Recette, Plat
+>>> with app.app_context():
+...     plats = Plat.query.all()
+...     for plat in plats:
+...             db.session.delete(plat)
+...     db.session.commit()
+...     print("Tous les plats ont été supprimés.")
+
+>>> from projet.models import db, Recette, Plat
+>>> with app.app_context():
+...     recettes = Recette.query.all()
+...     for recette in recettes:
+...             db.session.delete(recette)
+...     db.session.commit()
+...     print("Toutes les recettes ont été supprimés.")
+
+
+
+
 https://dbdiagram.io/d/67ed0dd84f7afba18411e146  mpd par yamina 
 https://demo.bpmn.io/new  bpmn par yamina
 https://www.jdoodle.com/online-java-compiler
@@ -163,7 +193,6 @@ https://www.jdoodle.com/online-java-compiler
 mysql Root Root Imane p@ssw0rd
 
 Remove-Item -Recurse -Force venv
-
 
 >>> from projet import app
 >>> from projet import db
