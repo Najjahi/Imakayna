@@ -3,13 +3,13 @@ import os
 from PIL import Image
 from flask import current_app
 
-def save_picture(form_picture, path, output_size=None):
-    random_hex = secrets.token_hex(8)
-    _, f_ext = os.path.splitext(form_picture.filename)
-    picture_name = random_hex + f_ext
-    picture_path = os.path.join(current_app.root_path, path, picture_name)
+def save_picture(form_picture, path, output_size=None): #path : sous-dossier où l’image sera enregistrée.
+    random_hex = secrets.token_hex(8) # form_picture : l’image envoyée via le formulaire.
+    _, f_ext = os.path.splitext(form_picture.filename) #output_size : dimensions cibles pour redimensionner l’image.
+    picture_name = random_hex + f_ext # Crée un nom de fichier unique et Conserve l’extension originale de l’image.
+    picture_path = os.path.join(current_app.root_path, path, picture_name) # Crée le chemin complet pour enregistrer l’image.
     i = Image.open(form_picture)
-    if output_size:
+    if output_size: # Si une taille est fournie, l’image est redimensionnée (proportionnellement) à output_size.
         i.thumbnail(output_size)
-    i.save(picture_path)
-    return picture_name 
+    i.save(picture_path) # Enregistre l’image dans le chemin spécifié.
+    return picture_name # Renvoie le nom de fichier de l’image enregistrée.

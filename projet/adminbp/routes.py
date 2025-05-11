@@ -28,8 +28,6 @@ def admin_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
-
-
 @adminbp.route('/admin/recettes_en_attente')
 @admin_required  # un décorateur qui vérifie que l'utilisateur est admin
 def recettes_en_attente():

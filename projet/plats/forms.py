@@ -8,7 +8,6 @@ from wtforms.validators import (
     ValidationError,
 )
 
-
 class NewPlatForm(FlaskForm):
     title = StringField("Le nom du Plat", validators=[DataRequired(), Length(max=50)])
     description = TextAreaField(

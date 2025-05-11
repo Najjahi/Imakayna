@@ -9,7 +9,7 @@ body::before {
     box-shadow: 0 5px 15px rgba(1 1 1/ 15);
     border-radius: 100px;
     margin: 5px;
-    background-color: #3a5a40;
+    /*background-color: #3a5a40;*/
 
 }
 .card:hover {
