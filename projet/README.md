@@ -1,21 +1,25 @@
-Flask App developed for Flask course on https://youtube.com/playlist?list=PL6X8IkNltYY_MgJNuEX- ◦ S1OABlAGOVUUw
- projet
+Flask App developed for Flask 
 python -m venv venv
 venv\Scripts\activate
-pip install flask
-pip install flask-sqlalchemy
-pip install Flask-Mail
+
+pip install bleach
 pip install email-validator
-pip install Flask-WTF 
-pip install wtforms-sqlalchemy 
-pip install Flask-Login 
-pip install flask-modals
+pip install flask
 pip install flask-admin 
-pip install Pillow
-pip install flask-ckeditor
 pip install Flask-Bcrypt
+pip install flask-ckeditor
+pip install Flask-Login 
+pip install Flask-Mail
 pip install Flask-Migrate
+pip install flask-modals
+pip install flask-sqlalchemy
+pip install Flask-WTF 
+pip install Pillow
 pip install python-dotenv
+pip install wtforms-sqlalchemy 
+
+
+pip install Flask-Migrate
 pip install bleach
 pip install Flask==2.2.5
 

@@ -3,7 +3,7 @@
 {% block content %}
 <section class="bg-light">
     <div class="container p-5">
-        <h3 class="text-center text-secondary" id="learn">Plats</h3>
+        <h3 class="text-center text-secondary" id="learn">NOUS VOUS PROPOSONS D'AUTRES PLATS</h3>
         <div class="row">
             {% for plat in plats.items %}
             <div class="col-sm-12 col-md-6 col-lg-4 p-3 d-flex align-items-stretch">
@@ -18,10 +18,14 @@
                 </a>
                 
                 <!-- Formulaire pour supprimer un plat -->
+                <div class="mt-auto p-3 d-flex justify-content-between">
+                    <form action="{{ url_for('plats.update_plat', plat_id=plat.id) }}" method="POST">
+                        <button type="submit" class="btn btn-primary">Modifier</button>
+                    </form>
                 <form action="{{ url_for('plats.delete_plat', plat_id=plat.id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce plat ?');">
                     <button type="submit" class="btn btn-danger">Supprimer</button>
                 </form>
-                
+            </div>
             </div>
             {% endfor %}
         </div>

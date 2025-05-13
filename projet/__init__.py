@@ -1,5 +1,5 @@
 import os
-from flask import Flask 
+from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
@@ -9,6 +9,8 @@ from flask_modals import Modal
 from flask_mail import Mail
 from projet.config import Config
 from flask_admin import Admin, AdminIndexView
+from flask_admin.contrib.sqla import ModelView
+
 
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -35,6 +37,10 @@ def create_app(config_class=Config):
     mail.init_app(app)
     admin.init_app(app, index_view=MyAdminIndexView())
     migrate.init_app(app, db)
+
+    from projet.models import User
+    
+    admin.add_view(ModelView(User, db.session, name="Utilisateurs", endpoint="user_admin"))
     
     from projet.main.routes import main
     from projet.users.routes import users
