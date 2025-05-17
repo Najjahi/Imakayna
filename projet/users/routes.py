@@ -64,7 +64,7 @@ def login():
             flash("Vous avez été connecté!", "success")
             return redirect(next_page) if next_page else redirect(url_for("main.home"))
         else:
-            flash("Connexion infructueuse. Veuillez vérifier les informations d’identification", "danger")
+            flash("Échec de la connexion. Vérifiez votre identifiant et votre mot de passe.", "danger")
     return render_template("login.html", title="Login", form=form)
 
 @users.route("/logout")
@@ -114,7 +114,7 @@ def profile():
             )
             current_user.image_file = picture_file
         else:
-            print("⚠️ Aucun fichier image reçu")
+            print(" Aucun fichier image reçu")
 
         current_user.username = profile_form.username.data
         current_user.email = profile_form.email.data

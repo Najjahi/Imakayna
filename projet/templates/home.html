@@ -64,7 +64,7 @@
 </section>
 <!-- Plats -->
 <section class="bg-warning-subtle ">
-    <div class="container p-5">       
+    <div class="container p-4">       
         <h3 class="text-uppercase text-center text-success bg-light" id='learn'>Nos différents Plats proposés</h3>
         <div class="row">
             {% for plat in plats.items %}
@@ -92,7 +92,7 @@
 </section>
 <!-- Recettes -->
 <section class="bg-warning-subtle"> 
-    <div class="container p-5">
+    <div class="container p-4">
         <div class="row mb-5 ">
             <div class="col">
                 <h3 class="text-uppercase text-center text-success bg-light">Recettes ajoutées récemment</h3>
@@ -113,19 +113,19 @@
                             {% else %}
                             <p>Données manquantes pour cette recette.</p>
                             {% endif %}
-                                <p>Recette Slug: {{ recette.slug }}</p>
+                                <p>Slug: {{ recette.slug }}</p>
                         </h5>
                         <p class="card-text mb-0">Dans:
                             <a class="text-decoration-none"
                                 href="{{ url_for('plats.plat', plat_title=recette.plat_name.title)}}">{{recette.plat_name.title}}</a>
                         </p>
-                        <p>Le nom du Plat : {{ recette.plat_name }}</p>
+                        <p> {{ recette.plat_name }}</p>
 
                         <span><img class="article-img rounded-circle"
                                 src="{{url_for('static', filename='user_pics/'+recette.author.image_file)}}" alt="">Par:
                             <a href="{{ url_for('users.author', username=recette.author.username)}}"
                                 class="link">{{recette.author.username}}</a></span>
-                                <p>Le titre du nom du Plat: {{ recette.plat_name.title }}</p>
+                                
                         <span class="text-muted">Le: {{recette.date_posted.strftime('%Y-%m-%d')}}</span>
                     </div>
                 </div>

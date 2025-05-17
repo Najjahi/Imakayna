@@ -50,3 +50,11 @@ def liste_plats():
     from projet.models import Plat
     plats = Plat.query.all()
     return render_template("admin/plats.html", plats=plats)
+
+# ========== APPROUVER RECETTES ==========
+@adminbp.route('/admin/recettes_en_attente')
+@login_required
+def recettes_en_attente():
+    from projet.models import Recette
+    recettes = Recette.query.filter_by(status='en_attente').all()  # selon ton modèle
+    return render_template('admin/recettes_en_attente.html', recettes=recettes)
