@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, render_template, redirect, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
@@ -8,8 +8,10 @@ from flask_ckeditor import CKEditor
 from flask_modals import Modal
 from flask_mail import Mail
 from projet.config import Config
-from flask_admin import Admin, AdminIndexView
+from flask_admin import Admin, AdminIndexView, expose
 from flask_admin.contrib.sqla import ModelView
+
+
 
 
 db = SQLAlchemy()
@@ -29,6 +31,8 @@ def create_app(config_class=Config):
     app.config.from_object(config_class)
     from projet.adminbp.routes import MyAdminIndexView
 
+    app.register_blueprint(adminbp)
+
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
@@ -39,6 +43,9 @@ def create_app(config_class=Config):
     migrate.init_app(app, db)
 
     from projet.models import User
+    # Importer les blueprints APRES l'init
+    from .adminbp.routes import adminbp
+    app.register_blueprint(adminbp, url_prefix="/admin")
     
     admin.add_view(ModelView(User, db.session, name="Utilisateurs", endpoint="user_admin"))
     

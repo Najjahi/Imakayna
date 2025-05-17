@@ -19,6 +19,8 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     is_admin = db.Column(db.Boolean, default=False)
     recettes = db.relationship("Recette", backref="author", lazy=True)
+    comments = db.relationship("Comment", backref="user", lazy=True)
+
 
     def get_reset_token(self):
         s = Serializer(current_app.config["SECRET_KEY"], salt="pw-reset")
@@ -47,7 +49,7 @@ class Recette(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
     plat_id = db.Column(db.Integer, db.ForeignKey("plat.id"), nullable=False)
 
-    def __repr__(self):
+    def __repr__(self): #méthode python permet de rendre l’objet plus compréhensible quand il est affiché.
         return f"Recette('{self.title}', '{self.date_posted}')"
 
 class Plat(db.Model):
@@ -56,9 +58,19 @@ class Plat(db.Model):
     description = db.Column(db.String(150), nullable=False)
     icon = db.Column(db.String(20), nullable=False, default="default_icon.jpg")
     recettes = db.relationship("Recette", backref="plat_name", lazy=True)
-    
+        
     def __repr__(self):
         return f"Plat('{self.title}')"
+    def save_slug(self):
+        """Méthode pour générer le slug à partir du titre"""
+        self.slug = self.title.lower().replace(" ", "-")
     
-    
-   
+class Comment(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    content = db.Column(db.Text, nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    recette_id = db.Column(db.Integer, db.ForeignKey("recette.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+       
+    def __repr__(self):
+        return f"Comment('{self.content[:20]}...','{self.date_posted}')"

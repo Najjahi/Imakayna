@@ -31,3 +31,11 @@ class NewRecetteForm(FlaskForm):
 class RecetteUpdateForm(NewRecetteForm):
     thumbnail = FileField("Thumbnail", validators=[FileAllowed(["jpg", "png"])])
     submit = SubmitField("Update")
+
+#Formulaire de commentaire
+class CommentForm(FlaskForm):
+    content = CKEditorField(
+        "Votre Commentaire", validators=[DataRequired()], render_kw={"rows": "5"}
+    )
+    submit = SubmitField("Publier")   
+    

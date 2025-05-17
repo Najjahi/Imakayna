@@ -41,8 +41,8 @@ pip install flask-modals pour javascript
 pip install flask-admin Pillow
 pip install Flask-WTF Flask-Login 
 pip install Flask-Migrate
-pip install flask==2.2.5pip 
-install --upgrade flask_modals
+pip install flask==2.2.5
+pip install --upgrade flask_modals
 pip install Werkzeug==2.2.3
 pip install python-dotenv
 pip install bleach
@@ -100,6 +100,8 @@ pip install --upgrade flask
 
 
 pip install -r requirements.txt
+pip install -r requirements.txt --upgrade
+
 python.exe -m pip install --upgrade pip
 .\.venv\Scripts\activate
 $env:FLASK_APP = "run.py" 

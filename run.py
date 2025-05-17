@@ -1,4 +1,5 @@
-from projet import create_app, db, Plat
+from projet import create_app, db
+from projet.models import Plat
 
 app = create_app()
 

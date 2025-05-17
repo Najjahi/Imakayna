@@ -1,0 +1,15 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<body onload="window.print()">
+    <div class="container">
+        <h1>{{ recette.title }}</h1>
+        <p><strong>Par :</strong> {{ recette.author.username }}</p>
+        <p><strong>Date :</strong> {{ recette.date_posted.strftime('%Y-%m-%d') }}</p>
+        <hr>
+        <div>
+            {{ recette.content|safe }}
+        </div>
+    </div>
+</body>
+{% endblock content%}

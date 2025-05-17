@@ -97,3 +97,10 @@ class ResetPasswordForm(FlaskForm):
         "Confirmation du mot de passe", validators=[DataRequired(), EqualTo("password")]
     )
     submit = SubmitField("Initialiser Mot de passe")
+
+class ProfileForm(FlaskForm):
+    nom = StringField('Nom')
+    submit = SubmitField('Enregistrer')
+
+class DeletePictureForm(FlaskForm):
+    submit = SubmitField('Supprimer la photo')
