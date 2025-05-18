@@ -7,8 +7,9 @@ body::before {
 .card {
     transition: 0.7s ease;
     box-shadow: 0 5px 15px rgba(1 1 1/ 15);
-    border-radius: 100px;
-    margin: 5px; 
+    border-radius: 10px;
+    /*margin: 5px; */
+    border: 1px solid #fff;
 }
 
 .card:hover {

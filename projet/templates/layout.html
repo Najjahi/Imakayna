@@ -40,7 +40,10 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-warning py-2 fixed-top">
         <div class="container ">
-            <a href="{{url_for('main.home')}}" class="navbar-brand text-success font-weight-bold ">Imakaina</a>
+            <a href="{{ url_for('main.home') }}" >
+    <img src="{{ url_for('static', filename='logo4-.png') }}" alt="Imakaina Logo" height="40">
+</a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -122,10 +125,14 @@
                 <div class="col-md-12 col-lg-4">
                     <h4 class="text-center text-decoration-underline">Contactez nous</h4>
                     <p class="lead text-dark">imakainacnam@gmail.com</p>
+                    <a href="{{ url_for('main.home') }}" class="navbar-brand">
+    <img src="{{ url_for('static', filename='logo4-.png') }}" alt="Imakaina Logo" height="40">
+</a>
                 </div>
             </div>
             <div class="col text-dark text-center position-relative">
                 <p class="lead text-dark fw-semibold">Copyright &copy; 2025 | Imakaina</p>
+                 
                 <a href="#" class="position-absolute bottom-0 end-0">
                     <i class="bi bi-arrow-up-circle h1"></i>
                 </a>

@@ -55,7 +55,9 @@ C:\Users\lenovo\Desktop\Pythonic-Flask\venv\Scripts\python.exe
 pip install flask_wtf 
  pip install flask_bcrypt from flask_bcrypt import Bcrypt 
 pip install flask_login
+from flask_bycrypr import Bcrypt
 bcrypt  =Bcrypt() instance de la clase bcrypt
+bcrypt .generate_password_hash('password').decode('utf-8')
 password = bcrypt.generate_password_hash('password').decode('utf-8')
  bcrypt.check_password_hash(hashed_password,'password123').decode('utf-8')
 hashed_password = bcrypt.generate_password_hash('form.password.data').decode('utf-8')

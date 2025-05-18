@@ -2,26 +2,24 @@
 {% block content %}
 <div class="container-fluid bg-warning-subtle text-dark text-center">
     <div class="container">
-        <div class="row p-1">
-            <div class="col-6">
-                 {{plat.title}} sont soigneusement préparées avec des ingrédients frais et savoureux.<br>
-                 Chaque bouchée de cette entrée révèle un subtil équilibre de saveurs, pensée pour débuter le repas avec finesse.
+        <div >
+            <div class=" text-center text-success my-2 py-1" >                 
+                 Chaque bouchée de cette entrée révèle un subtil équilibre de saveurs, pensée pour débuter le repas avec finesse.<br>
+                 {{plat.title}} ( {{plat.description}} )sont soigneusement préparées avec des ingrédients frais et savoureux.
             </div>
-            <div class="col-6">
-                <span class="lead text-dark">{{plat.description}} </span>
-            </div>
+            
         </div>
     </div>
 </div>
 <section class="bg-light">
     <div class="container p-5">
-        <div class="row mb-5 ">
+        <div class="row mb-1 ">
         </div>
         <div class="row">
             {% for recette in recettes.items %}
             <div class="col-sm-12 col-md-6 col-lg-4 pb-5 d-flex align-items-stretch">
                 <div class="card recette">
-                    <img src="{{url_for('static', filename='recette_thumbnails/'+recette.thumbnail)}}" class="card-img">
+                    <img src="{{url_for('static', filename='recette_thumbnails/'+recette.thumbnail)}}" class="card-img" style="width: 320px; height: 300px; object-fit: cover;" alt="...">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title">
                             <a class="text-decoration-none text-dark"
